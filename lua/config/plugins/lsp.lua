@@ -16,10 +16,14 @@ return {
 		config = function()
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 			require("lspconfig").lua_ls.setup({
-				capabilites = capabilites
+				capabilites = capabilities
 			})
 			require("lspconfig").ts_ls.setup({
-				capabilites = capabilites
+				capabilites = capabilities
+			})
+
+			require("lspconfig").tailwindcss.setup({
+				capabilites = capabilities
 			})
 
 			vim.api.nvim_create_autocmd('LspAttach', {
@@ -32,6 +36,9 @@ return {
 
 					-- Auto-format ("lint") on save.
 					-- Usually not needed if server supports "textDocument/willSaveWaitUntil".
+
+					vim.keymap.set("n", "gd", vim.lsp.buf.definition,
+						{ noremap = true, silent = true, buffer = args.buf, desc = "Go To Definition" })
 
 					if client:supports_method('textDocument/formatting') then
 						vim.api.nvim_create_autocmd('BufWritePre', {
