@@ -14,16 +14,40 @@ return {
 			},
 		},
 		config = function()
+			local lspconfig = require("lspconfig")
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
-			require("lspconfig").lua_ls.setup({
+
+			lspconfig.lua_ls.setup({
 				capabilites = capabilities
 			})
-			require("lspconfig").ts_ls.setup({
+			lspconfig.ts_ls.setup({
 				capabilites = capabilities
 			})
 
-			require("lspconfig").tailwindcss.setup({
+			lspconfig.tailwindcss.setup({
 				capabilites = capabilities
+			})
+
+			lspconfig.rust_analyzer.setup {
+				settings = {
+					['rust-analyzer'] = {
+						diagnostics = {
+							enable = false,
+						}
+					}
+				}
+			}
+
+			lspconfig.gopls.setup({
+				settings = {
+					gopls = {
+						analyses = {
+							unusedparams = true,
+						},
+						staticcheck = true,
+						gofumpt = true,
+					},
+				},
 			})
 
 			vim.api.nvim_create_autocmd('LspAttach', {
