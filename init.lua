@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	callback = function()
 		vim.highlight.on_yank()
 	end,
-})
+});
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Show error under cursor" })
+vim.keymap.set('n', '<leader>kb', function() require('mini.files').open() end, { desc = 'Open mini.files' })

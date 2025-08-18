@@ -16,6 +16,8 @@ return {
 			},
 
 			signature = { enabled = true },
+
+			build = "cargo build --release",
 		},
 	}
 }

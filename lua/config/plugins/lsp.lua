@@ -9,6 +9,7 @@ return {
 				opts = {
 					library = {
 						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+						"${3rd}/love2d/library"
 					},
 				}
 			},
