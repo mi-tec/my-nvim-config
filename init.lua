@@ -1,4 +1,5 @@
 local opt = vim.opt;
+local keymap = vim.keymap;
 
 print("Welcome Willow!")
 
@@ -18,5 +19,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	end,
 });
 
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Show error under cursor" })
-vim.keymap.set('n', '<leader>kb', function() require('mini.files').open() end, { desc = 'Open mini.files' })
+keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Show error under cursor" })
+keymap.set('n', '<leader>kb', function() require('mini.files').open() end, { desc = 'Open mini.files' })
+
+-- vim.keymap.set('n', 'nt',)
